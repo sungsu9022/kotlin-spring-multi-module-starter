@@ -8,5 +8,5 @@ Content-Type: application/json
 {"name":"test"}
 
 ### get member
-GET /api/members/4eb11e82-f64d-4cbb-8c21-a2d5fca2415f
+GET /api/members/67a7bbae-cc9e-4a37-aa83-f2874ce09d0e
 Host: localhost:9901

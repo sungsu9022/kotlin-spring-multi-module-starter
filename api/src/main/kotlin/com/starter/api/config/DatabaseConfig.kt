@@ -1,6 +1,7 @@
 package com.starter.api.config
 
 import org.springframework.boot.autoconfigure.domain.EntityScan
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
@@ -19,7 +20,12 @@ import javax.sql.DataSource
 @EntityScan("com.starter")
 @EnableTransactionManagement
 @EnableJpaAuditing
-class DatabaseConfig {
+class DatabaseConfig(
+	private val jpaProperties: JpaProperties,
+) {
+	companion object {
+		const val PERSISTENCE_UNIT = "entityManager"
+	}
 
 	@Profile("local")
 	@Bean

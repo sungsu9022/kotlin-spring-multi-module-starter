@@ -1,0 +1,32 @@
+def webpack = project.findProperty('webpack') ?: false
+if (webpack.toBoolean()) {
+    apply plugin: "com.github.node-gradle.node"
+
+    node {
+        version = '14.17.0'
+        yarnVersion = '1.22.10'
+        download = true
+    }
+
+    task yarnInstall(type: YarnTask) {
+        args = ['install']
+    }
+
+    task yarnBuild(type: YarnTask, dependsOn: yarnInstall) {
+        args = ['run', 'build:product']
+    }
+
+    task copyDist(type: Copy, dependsOn: yarnBuild) {
+        from('build/prepare') {
+            include '**/*'
+        }
+        into 'build/resources/main'
+        includeEmptyDirs = true
+    }
+
+    task deleteDist(type: Delete, dependsOn: copyDist) {
+        delete 'build/prepare'
+    }
+
+    bootJar.dependsOn(deleteDist)
+}

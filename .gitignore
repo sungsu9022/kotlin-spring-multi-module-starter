@@ -60,6 +60,7 @@ cache/
 /logs/
 
 api/build/
+admin/build/
 core/build/
 
 cache

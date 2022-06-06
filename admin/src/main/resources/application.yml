@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: starter-admin
+  messages:
+    encoding: UTF-8
+  profiles:
+    include:
+      - core
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+server:
+  port: 9902
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+  tomcat:
+    accesslog:
+      enabled: true
+      directory:
+      prefix: admin-access-log
+    basedir: logs/tomcat/admin/

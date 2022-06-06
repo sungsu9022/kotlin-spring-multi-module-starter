@@ -6,6 +6,7 @@ import com.starter.core.common.utils.IdUtils
 import com.starter.core.member.models.MemberVO
 import com.starter.core.member.models.MemberVOMapper
 import com.starter.core.member.repository.MemberRepository
+import com.starter.core.member.repository.MemberRepositorySupport
 import com.starter.core.member.service.MemberService
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
@@ -13,9 +14,10 @@ import org.springframework.stereotype.Service
 @Service
 class MemberResisterService(
 	private val memberRepository: MemberRepository,
+	private val memberRepositorySupport: MemberRepositorySupport,
 	private val memberDtoMapper: MemberDtoMapper,
 	private val memberVOMapper: MemberVOMapper,
-) : MemberService(memberRepository, memberVOMapper) {
+) : MemberService(memberRepository, memberRepositorySupport, memberVOMapper) {
 	companion object {
 		private val logger = KotlinLogging.logger {}
 	}

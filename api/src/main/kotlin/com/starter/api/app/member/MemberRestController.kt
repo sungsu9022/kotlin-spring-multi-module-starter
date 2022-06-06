@@ -17,9 +17,15 @@ class MemberRestController(
 	}
 
 	@GetMapping("/api/members/{id}")
-	fun createMember(@PathVariable id: String) : ServiceResponse {
+	fun getMember(@PathVariable id: String) : ServiceResponse {
 		val member = memberResisterService.getMemberById(id)
 		return SuccessResponse.create(member)
+	}
+
+	@GetMapping("/api/members/name")
+	fun getMembersByName(@RequestParam name: String) : ServiceResponse {
+		val members = memberResisterService.getMembersByName(name);
+		return SuccessResponse.create(members)
 	}
 }
 

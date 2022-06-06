@@ -35,6 +35,8 @@ def profile = project.findProperty("profile") ?: "local"
 def core = "$rootDir/core"
 println("profile : ${profile}");
 
+apply from: "${rootDir}/jpa.build.gradle"
+
 sourceSets {
     main {
         resources {

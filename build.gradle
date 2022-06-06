@@ -1,0 +1,172 @@
+buildscript {
+    ext {
+        kotlinVersion = "1.6.21"
+        kotlinLoggingVersion = "2.0.8"
+        springBootVersion = "2.6.8"
+        springDocVersion = "1.5.8"
+        mapstructVersion = "1.4.2.Final"
+        commonsPoolVersion = "2.11.1"
+        caffeineVersion = "2.6.2"
+        mockitoVersion = "3.9.0"
+        springCloudVersion = "2020.0.4"
+        openFeginVersion = "3.1.3"
+        classgraphVersion = "4.8.139"
+
+
+        owaspDependencyCheckGradleVersion = "6.1.6"
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://repo.spring.io/snapshot") }
+        maven { url = uri("https://repo.spring.io/milestone") }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.owasp:dependency-check-gradle:${owaspDependencyCheckGradleVersion}")
+    }
+}
+
+subprojects {
+    project.group = "com.starter"
+
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://repo.spring.io/snapshot") }
+        maven { url = uri("https://repo.spring.io/milestone") }
+    }
+
+    if (it.name == "core") {
+        apply plugin: "java-library"
+    } else {
+        apply plugin: "application"
+    }
+
+    apply plugin: "idea"
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
+    apply plugin: "java"
+    apply plugin: "kotlin"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "kotlin-spring"
+    apply plugin: "kotlin-noarg"
+    apply plugin: "kotlin-kapt"
+    apply plugin: "io.spring.dependency-management"
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+        dependencies {
+            dependency("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeginVersion}")
+            dependency("org.springdoc:springdoc-openapi-ui:${springDocVersion}")
+            dependency("org.springdoc:springdoc-openapi-webmvc-core:${springDocVersion}")
+            dependency("org.mapstruct:mapstruct:${mapstructVersion}")
+            dependency("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+            dependency("com.github.ben-manes.caffeine:caffeine:${caffeineVersion}")
+            dependency("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+            dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+            dependency("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+            dependency("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+            dependency("org.apache.commons:commons-pool2:$commonsPoolVersion")
+            dependency("org.mockito:mockito-inline:$mockitoVersion")
+            dependency("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+            dependency("io.github.classgraph:classgraph:$classgraphVersion")
+        }
+    }
+
+    dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        testCompile("org.jetbrains.kotlin:kotlin-test")
+
+        implementation("org.apache.commons:commons-pool2")
+
+
+        implementation("org.mapstruct:mapstruct")
+        compileOnly("org.mapstruct:mapstruct-processor")
+        testCompileOnly("org.mapstruct:mapstruct-processor")
+
+        testAnnotationProcessor("org.mapstruct:mapstruct-processor")
+
+
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        kapt("org.mapstruct:mapstruct-processor")
+
+
+        kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+        implementation("com.github.ben-manes.caffeine:caffeine")
+
+        implementation("io.github.microutils:kotlin-logging")
+
+        // Test
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+        testImplementation("org.mockito:mockito-inline")
+        testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.5.31")
+    }
+
+    kapt {
+        correctErrorTypes true
+        arguments {
+            /**
+             * @Mapper(componentModel = "spring")를 기본값으로 설정
+             * @Mapper 어노테이션이 붙은 xxxMapperImpl을 스프링 빈으로 만듬
+             */
+            arg("mapstruct.defaultComponentModel", "spring")
+            arg("mapstruct.defaultInjectionStrategy", "constructor")
+        }
+    }
+
+    noArg {
+        annotation("com.webtoon.event.core.common.annotations.NoArgumentConstructor")
+        invokeInitializers = true
+    }
+
+    configurations {
+        // all*.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+    }
+
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+            languageVersion = "1.6"
+            freeCompilerArgs = ['-Xjvm-default=all']
+        }
+    }
+
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+            languageVersion = "1.6"
+            freeCompilerArgs = ['-Xjvm-default=all']
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    clean {
+        delete "out"
+    }
+}

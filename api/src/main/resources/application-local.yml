@@ -1,0 +1,31 @@
+logging:
+  level:
+    root: DEBUG
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+event:
+  security:
+    cors-allowed-origin:
+    swagger-ui-path: /document/swagger-ui/index.html
+  url:
+    mobile: local-m.webtoons.com
+    webtoon-gw-photo-infra: https://beta.ssl.phinf.net/webtoon
+
+
+springdoc:
+  packagesToScan: com.starter.api.app
+  api-docs:
+    enabled: true
+    path: /document/api-docs
+  swagger-ui:
+    enabled: true
+    path: /document/swagger-ui.html
+
+
+sleuth:
+  sampler:
+    probability: 1.0

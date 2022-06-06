@@ -1,0 +1,12 @@
+
+
+### crate member
+POST /api/members/
+Host: localhost:9901
+Content-Type: application/json
+
+{"name":"test"}
+
+### get member
+GET /api/members/4eb11e82-f64d-4cbb-8c21-a2d5fca2415f
+Host: localhost:9901

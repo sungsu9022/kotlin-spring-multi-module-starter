@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
 
-@ConfigurationPropertiesScan(basePackages = ["com.starter"])
+@ConfigurationPropertiesScan
 @SpringBootApplication(
 	scanBasePackages = ["com.starter.api", "com.starter.core"],
 	exclude = [RedisAutoConfiguration::class, DataSourceAutoConfiguration::class]

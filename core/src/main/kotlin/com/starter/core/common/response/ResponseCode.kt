@@ -1,4 +1,4 @@
-package com.starter.api.app.common.response
+package com.starter.core.common.response
 
 import org.springframework.http.HttpStatus
 

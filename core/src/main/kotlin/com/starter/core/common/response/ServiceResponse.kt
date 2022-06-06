@@ -1,4 +1,4 @@
-package com.starter.api.app.common.response
+package com.starter.core.common.response
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -13,7 +13,11 @@ open class BaseResponse<T>(
 class SuccessResponse<T: Any?>(status: Status, result: T) : BaseResponse<T>(true, status, result) {
 	companion object {
 		private const val OK = "ok"
-		val DEFAULT = SuccessResponse.create(Status.DEFAULT, OK)
+		private val DEFAULT = create(Status.DEFAULT, OK)
+
+		fun getDefault() : ServiceResponse {
+			return DEFAULT
+		}
 
 		fun <T> create(results : T): ServiceResponse {
 			return SuccessResponse(Status(ResponseCode.OK, OK), results)

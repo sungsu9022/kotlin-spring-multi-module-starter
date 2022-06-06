@@ -1,19 +1,19 @@
 logging:
   level:
     root: DEBUG
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
 
 spring:
   config:
     activate:
       on-profile: dev
 
-event:
+starter:
   security:
-    cors-allowed-origin:
     swagger-ui-path: /document/swagger-ui/index.html
-  url:
-    mobile: dev-m.webtoons.com
-    webtoon-gw-photo-infra: https://beta.ssl.phinf.net/webtoon
 
 
 springdoc:

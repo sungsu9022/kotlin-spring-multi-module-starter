@@ -1,6 +1,6 @@
-package com.starter.api.app.common.exception
+package com.starter.core.common.exception
 
-import com.starter.api.app.common.response.ResponseCode
+import com.starter.core.common.response.ResponseCode
 import org.springframework.boot.logging.LogLevel
 
 enum class ErrorCode(val resposneCode: ResponseCode, val logLevel: LogLevel) {

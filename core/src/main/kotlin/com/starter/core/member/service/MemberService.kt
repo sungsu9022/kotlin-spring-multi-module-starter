@@ -5,13 +5,11 @@ import com.starter.core.common.exception.ServiceException
 import com.starter.core.member.models.MemberVO
 import com.starter.core.member.models.MemberVOMapper
 import com.starter.core.member.repository.MemberRepository
-import com.starter.core.member.repository.MemberRepositorySupport
 import org.springframework.stereotype.Service
 
 @Service
 class MemberService(
 	private val memberRepository: MemberRepository,
-	private val memberRepositorySupport: MemberRepositorySupport,
 	private val memberVOMapper: MemberVOMapper
 ) {
 
@@ -22,7 +20,7 @@ class MemberService(
 	}
 
 	fun getMembersByName(name: String) : List<MemberVO> {
-		return memberRepositorySupport.findAllByName(name)
+		return memberRepository.findAllByName(name)
 			.map { memberVOMapper.convertToTarget(it) }
 	}
 }

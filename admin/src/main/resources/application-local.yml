@@ -1,9 +1,10 @@
 logging:
   level:
-    root: DEBUG
-    org.hibernate:
-      SQL: debug
-      type.descriptor.sql: trace
+    root: INFO
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
 
 spring:
   config:
@@ -20,17 +21,16 @@ spring:
 ---
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
-    username: sa
-    password:
-    h2:
-      console:
-        enabled: true
-        path: /h2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/starter
+    username: starter
+    password: starter
+    configuration:
+      hikari:
+        auto-commit: false
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    database: H2
+    database-platform: org.hibernate.dialect.MySQLDialect
+    database: MYSQL
     generate-ddl: false
     open-in-view: false
     show-sql: true
@@ -43,10 +43,7 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
-        cache.use_second_level_cache: true
-        cache.use_query_cache: false
         generate_statistics: true
-        cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
         default_batch_fetch_size: 1000
 
 

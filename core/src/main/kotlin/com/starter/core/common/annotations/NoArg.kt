@@ -1,3 +1,3 @@
 package com.starter.core.common.annotations
 
-annotation class NoArgumentConstructor
+annotation class NoArg

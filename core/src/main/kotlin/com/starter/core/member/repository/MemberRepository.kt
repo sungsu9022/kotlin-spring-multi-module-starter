@@ -1,8 +1,8 @@
 package com.starter.core.member.repository
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.jpa.repository.JpaRepository
 
-interface MemberRepository : CrudRepository<MemberEntity, Long> {
+interface MemberRepository : JpaRepository<MemberEntity, Long>, MemberRepositoryQL {
 
 	fun findById(id : String) : MemberEntity?
 

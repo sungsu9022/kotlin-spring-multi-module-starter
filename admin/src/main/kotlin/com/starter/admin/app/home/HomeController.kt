@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class HomeRestController {
 
-	@GetMapping(value = ["/", "/index"], produces = [MediaType.TEXT_HTML_VALUE])
-	fun getHome() : String {
-		return "home"
-	}
+    @GetMapping(value = ["/", "/index"], produces = [MediaType.TEXT_HTML_VALUE])
+    fun getHome(): String {
+        return "home"
+    }
 }
 

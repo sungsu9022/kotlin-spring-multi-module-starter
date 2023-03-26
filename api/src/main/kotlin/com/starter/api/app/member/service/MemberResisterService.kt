@@ -12,20 +12,20 @@ import org.springframework.stereotype.Service
 
 @Service
 class MemberResisterService(
-	private val memberRepository: MemberRepository,
-	private val memberDtoMapper: MemberDtoMapper,
-	private val memberVOMapper: MemberVOMapper,
+    private val memberRepository: MemberRepository,
+    private val memberDtoMapper: MemberDtoMapper,
+    private val memberVOMapper: MemberVOMapper,
 ) : MemberService(memberRepository, memberVOMapper) {
-	companion object {
-		private val logger = KotlinLogging.logger {}
-	}
+    companion object {
+        private val logger = KotlinLogging.logger {}
+    }
 
-	fun resisterMember(memberDto: MemberDto) : MemberVO {
-		val id = IdUtils.generate()
-		val memberEntity = memberDtoMapper.convertToEntity(memberDto, id)
-		logger.debug { "memberEntity : $memberEntity" }
-		val saved = memberRepository.save(memberEntity)
-		logger.debug { "memberEntity : $memberEntity, saved : $saved" }
-		return memberVOMapper.convertToTarget(saved)
-	}
+    fun resisterMember(memberDto: MemberDto): MemberVO {
+        val id = IdUtils.generate()
+        val memberEntity = memberDtoMapper.convertToEntity(memberDto, id)
+        logger.debug { "memberEntity : $memberEntity" }
+        val saved = memberRepository.save(memberEntity)
+        logger.debug { "memberEntity : $memberEntity, saved : $saved" }
+        return memberVOMapper.convertToTarget(saved)
+    }
 }

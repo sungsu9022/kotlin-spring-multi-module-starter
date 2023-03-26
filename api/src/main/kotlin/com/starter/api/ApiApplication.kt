@@ -7,10 +7,10 @@ import org.springframework.boot.runApplication
 
 @ConfigurationPropertiesScan
 @SpringBootApplication(
-	scanBasePackages = ["com.starter.api", "com.starter.core"],
+    scanBasePackages = ["com.starter.api", "com.starter.core"],
 )
 class ApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<ApiApplication>(*args)
+    runApplication<ApiApplication>(*args)
 }

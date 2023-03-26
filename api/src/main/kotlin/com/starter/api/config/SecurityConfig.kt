@@ -16,17 +16,17 @@ import java.time.Duration
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(private val securityProperty : SecurityProperty) {
-	companion object {
-		val CORS_ALLOWED_METHODS = listOf(
-			HttpMethod.GET.toString(),
-			HttpMethod.POST.toString(),
-			HttpMethod.PATCH.toString(),
-			HttpMethod.PUT.toString(),
-			HttpMethod.DELETE.toString(),
-			HttpMethod.OPTIONS.toString(),
-		)
-	}
+class SecurityConfig(private val securityProperty: SecurityProperty) {
+    companion object {
+        val CORS_ALLOWED_METHODS = listOf(
+            HttpMethod.GET.toString(),
+            HttpMethod.POST.toString(),
+            HttpMethod.PATCH.toString(),
+            HttpMethod.PUT.toString(),
+            HttpMethod.DELETE.toString(),
+            HttpMethod.OPTIONS.toString(),
+        )
+    }
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
@@ -61,16 +61,16 @@ class SecurityConfig(private val securityProperty : SecurityProperty) {
 //	}
 
 
-	private fun corsConfigurationSource(): CorsConfigurationSource {
-		val corsConfiguration = CorsConfiguration()
-		corsConfiguration.allowedOrigins = listOf(CorsConfiguration.ALL)
-		corsConfiguration.allowedHeaders = listOf(CorsConfiguration.ALL)
-		CORS_ALLOWED_METHODS.forEach { method -> corsConfiguration.addAllowedMethod(method) }
-		corsConfiguration.allowCredentials = true
-		corsConfiguration.setMaxAge(Duration.ofDays(1))
-		val urlBasedCorsConfigurationSource = UrlBasedCorsConfigurationSource()
-		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration)
-		return urlBasedCorsConfigurationSource
-	}
+    private fun corsConfigurationSource(): CorsConfigurationSource {
+        val corsConfiguration = CorsConfiguration()
+        corsConfiguration.allowedOrigins = listOf(CorsConfiguration.ALL)
+        corsConfiguration.allowedHeaders = listOf(CorsConfiguration.ALL)
+        CORS_ALLOWED_METHODS.forEach { method -> corsConfiguration.addAllowedMethod(method) }
+        corsConfiguration.allowCredentials = true
+        corsConfiguration.setMaxAge(Duration.ofDays(1))
+        val urlBasedCorsConfigurationSource = UrlBasedCorsConfigurationSource()
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration)
+        return urlBasedCorsConfigurationSource
+    }
 
 }

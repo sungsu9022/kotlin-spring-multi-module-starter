@@ -8,16 +8,16 @@ import org.mapstruct.factory.Mappers
 
 @Mapper
 interface MemberDtoMapper : GenericMapper<MemberEntity, MemberDto> {
-	companion object {
-		val INSTANCE: MemberDtoMapper = Mappers.getMapper(MemberDtoMapper::class.java)
-	}
+    companion object {
+        val INSTANCE: MemberDtoMapper = Mappers.getMapper(MemberDtoMapper::class.java)
+    }
 
-	fun convertToEntity(target: MemberDto, id: String): MemberEntity {
-		return MemberEntity(
-			id = id,
-			name = target.name
-		)
-	}
+    fun convertToEntity(target: MemberDto, id: String): MemberEntity {
+        return MemberEntity(
+            id = id,
+            name = target.name
+        )
+    }
 
 
 }

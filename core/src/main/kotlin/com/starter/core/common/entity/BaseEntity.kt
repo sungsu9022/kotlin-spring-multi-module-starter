@@ -11,9 +11,10 @@ import java.time.LocalDateTime
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class BaseEntity {
-	@CreatedDate
-	@Column(updatable=false)
-	lateinit var  registerYmdt : LocalDateTime
-	@LastModifiedDate
-	lateinit var modifyYmdt : LocalDateTime
+    @CreatedDate
+    @Column(updatable = false)
+    lateinit var registerYmdt: LocalDateTime
+
+    @LastModifiedDate
+    lateinit var modifyYmdt: LocalDateTime
 }

@@ -29,12 +29,12 @@ import javax.sql.DataSource
 @EnableTransactionManagement
 @EnableJpaAuditing
 class DataSourceConfig(
-	private val jpaProperties: JpaProperties,
-	private val hibernateProperties: HibernateProperties
+    private val jpaProperties: JpaProperties,
+    private val hibernateProperties: HibernateProperties
 ) {
-	companion object {
-		const val PERSISTENCE_UNIT = "entityManager"
-	}
+    companion object {
+        const val PERSISTENCE_UNIT = "entityManager"
+    }
 
     @Bean
     @ConfigurationProperties("spring.datasource")
@@ -52,38 +52,38 @@ class DataSourceConfig(
             .build()
     }
 
-	@Bean
-	fun entityManagerFactory(
-		builder: EntityManagerFactoryBuilder,
-		dataSource: DataSource,
+    @Bean
+    fun entityManagerFactory(
+        builder: EntityManagerFactoryBuilder,
+        dataSource: DataSource,
 
-	): LocalContainerEntityManagerFactoryBean {
-		val properties = hibernateProperties.determineHibernateProperties(jpaProperties.properties, HibernateSettings())
+        ): LocalContainerEntityManagerFactoryBean {
+        val properties = hibernateProperties.determineHibernateProperties(jpaProperties.properties, HibernateSettings())
 
-		return builder.dataSource(dataSource)
-			.packages("com.starter")
-			.properties(properties)
-			.persistenceUnit(PERSISTENCE_UNIT)
-			.build()
-	}
+        return builder.dataSource(dataSource)
+            .packages("com.starter")
+            .properties(properties)
+            .persistenceUnit(PERSISTENCE_UNIT)
+            .build()
+    }
 
-	@Bean
-	fun transactionManager(entityManagerFactory: EntityManagerFactory): PlatformTransactionManager {
-		val txManager = JpaTransactionManager()
-		txManager.setEntityManagerFactory(entityManagerFactory)
-		return txManager
-	}
+    @Bean
+    fun transactionManager(entityManagerFactory: EntityManagerFactory): PlatformTransactionManager {
+        val txManager = JpaTransactionManager()
+        txManager.setEntityManagerFactory(entityManagerFactory)
+        return txManager
+    }
 
-	@Bean
-	fun jpaQueryFactory(entityManager: EntityManager): JPAQueryFactory {
-		return JPAQueryFactory(entityManager)
-	}
+    @Bean
+    fun jpaQueryFactory(entityManager: EntityManager): JPAQueryFactory {
+        return JPAQueryFactory(entityManager)
+    }
 
-	@Bean
-	fun pageableCustomizer() : PageableHandlerMethodArgumentResolverCustomizer {
-		return PageableHandlerMethodArgumentResolverCustomizer { resolver ->
-			resolver.setOneIndexedParameters(true)
-			resolver.setMaxPageSize(100)
-		}
-	}
+    @Bean
+    fun pageableCustomizer(): PageableHandlerMethodArgumentResolverCustomizer {
+        return PageableHandlerMethodArgumentResolverCustomizer { resolver ->
+            resolver.setOneIndexedParameters(true)
+            resolver.setMaxPageSize(100)
+        }
+    }
 }

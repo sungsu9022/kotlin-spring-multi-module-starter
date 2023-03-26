@@ -68,7 +68,7 @@ subprojects {
         plugin("io.spring.dependency-management")
     }
 
-    if(this.name == "core") {
+    if (this.name == "core") {
         apply {
             plugin("java-library")
         }
@@ -115,7 +115,6 @@ subprojects {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         kapt("org.springframework.boot:spring-boot-configuration-processor")
 
-
         // spring doc
         implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
 
@@ -140,7 +139,6 @@ subprojects {
         implementation("org.eclipse.jetty:jetty-reactive-httpclient:$jettyHttpClientVersion")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinVersion")
         runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$coroutinVersion")
-
 
         // test
         testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -176,9 +174,7 @@ subprojects {
         annotation("jakarta.persistence.MappedSuperclass")
         annotation("jakarta.persistence.Embeddable")
         annotation("com.starter.core.common.annotations.AllOpen")
-
     }
-
 }
 
 tasks {

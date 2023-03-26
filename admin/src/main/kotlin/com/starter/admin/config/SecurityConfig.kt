@@ -15,7 +15,7 @@ import java.time.Duration
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(private val securityProperty : SecurityProperty) {
+class SecurityConfig(private val securityProperty: SecurityProperty) {
     companion object {
         val CORS_ALLOWED_METHODS = listOf(
             HttpMethod.GET.toString(),

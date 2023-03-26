@@ -7,10 +7,10 @@ import org.springframework.boot.runApplication
 
 @ConfigurationPropertiesScan
 @SpringBootApplication(
-	scanBasePackages = ["com.starter.admin", "com.starter.core"],
+    scanBasePackages = ["com.starter.admin", "com.starter.core"],
 )
 class AdminApplication
 
 fun main(args: Array<String>) {
-	runApplication<AdminApplication>(*args)
+    runApplication<AdminApplication>(*args)
 }

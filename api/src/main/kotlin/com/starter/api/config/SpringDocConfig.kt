@@ -9,17 +9,17 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class SpringDocConfig {
 
-	@Bean
-	fun openAPI(): OpenAPI? {
-		return OpenAPI()
-			.info(
-				Info()
-					.title("starter API document")
-					.version("v1.0.0")
-			)
-			.addServersItem(
-				Server()
-					.url("/")
-			)
-	}
+    @Bean
+    fun openAPI(): OpenAPI? {
+        return OpenAPI()
+            .info(
+                Info()
+                    .title("starter API document")
+                    .version("v1.0.0")
+            )
+            .addServersItem(
+                Server()
+                    .url("/")
+            )
+    }
 }

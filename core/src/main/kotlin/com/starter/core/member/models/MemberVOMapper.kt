@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers
 
 @Mapper
 interface MemberVOMapper : GenericMapper<MemberEntity, MemberVO> {
-	companion object {
-		val INSTANCE: MemberVOMapper = Mappers.getMapper(MemberVOMapper::class.java)
-	}
+    companion object {
+        val INSTANCE: MemberVOMapper = Mappers.getMapper(MemberVOMapper::class.java)
+    }
 }

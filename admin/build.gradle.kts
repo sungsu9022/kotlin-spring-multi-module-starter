@@ -19,4 +19,4 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
 }
 
-apply(from = "${project.rootDir}/webpack.build.gradle")
+apply("${project.rootDir}/webpack.build.gradle")

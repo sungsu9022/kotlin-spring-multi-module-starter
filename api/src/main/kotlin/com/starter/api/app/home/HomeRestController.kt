@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class HomeRestController {
 
-	@GetMapping("/api/home")
-	fun getHome() : ServiceResponse {
-		return SuccessResponse.create(HomeResult("home"))
-	}
+    @GetMapping("/api/home")
+    fun getHome(): ServiceResponse {
+        return SuccessResponse.create(HomeResult("home"))
+    }
 }
 
 class HomeResult(val message: String)

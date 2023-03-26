@@ -1,9 +1,13 @@
 # starter-api
+
 ## Build
+
 ``` sh 
 ./gradlew clean build -p api -Pprofile=local
 ```
+
 ## Run(after Build)
+
 ``` sh
 # from root
 cd api/build/libs

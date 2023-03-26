@@ -12,9 +12,9 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = "member")
 class MemberEntity(
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	val no: Long = 0,
-	override val id: String,
-	override var name: String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val no: Long = 0,
+    override val id: String,
+    override var name: String,
 ) : BaseEntity(), Member

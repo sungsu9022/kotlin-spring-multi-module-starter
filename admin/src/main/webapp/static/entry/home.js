@@ -6,9 +6,9 @@ import Home from 'ModuleRoot/view/home';
 import CommonUtil from "UtilRoot/commonUtil";
 
 (async () => {
-	console.log(`randomString : ${CommonUtil.randomString()}`);
-	new Vue({
-		el: '#app',
-		components: { Home }
-	});
+  console.log(`randomString : ${CommonUtil.randomString()}`);
+  new Vue({
+    el: '#app',
+    components: {Home}
+  });
 })();

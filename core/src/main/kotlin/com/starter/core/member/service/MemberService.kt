@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service
 
 @Service
 class MemberService(
-	private val memberRepository: MemberRepository,
-	private val memberVOMapper: MemberVOMapper
+    private val memberRepository: MemberRepository,
+    private val memberVOMapper: MemberVOMapper
 ) {
 
-	fun getMemberById(id: String) : MemberVO {
-		return memberRepository.findById(id)
-			?.let { memberVOMapper.convertToTarget(it) }
-			?: throw ServiceException(ErrorCode.NOT_FOUND)
-	}
+    fun getMemberById(id: String): MemberVO {
+        return memberRepository.findById(id)
+            ?.let { memberVOMapper.convertToTarget(it) }
+            ?: throw ServiceException(ErrorCode.NOT_FOUND)
+    }
 
-	fun getMembersByName(name: String) : List<MemberVO> {
-		return memberRepository.findAllByName(name)
-			.map { memberVOMapper.convertToTarget(it) }
-	}
+    fun getMembersByName(name: String): List<MemberVO> {
+        return memberRepository.findAllByName(name)
+            .map { memberVOMapper.convertToTarget(it) }
+    }
 }

@@ -14,22 +14,22 @@ import java.time.LocalDateTime
 @Configuration
 class ApplicationConfig {
 
-	@Bean
-	fun objectMapper(): ObjectMapper {
-		val objectMapper = Jackson2ObjectMapperBuilder.json()
-				.featuresToDisable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-				.featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-				.build<ObjectMapper>()
-		objectMapper.registerModule(JavaTimeModule())
-		objectMapper.registerModule(localDateTimeModule())
-		return objectMapper
-	}
+    @Bean
+    fun objectMapper(): ObjectMapper {
+        val objectMapper = Jackson2ObjectMapperBuilder.json()
+            .featuresToDisable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+            .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            .build<ObjectMapper>()
+        objectMapper.registerModule(JavaTimeModule())
+        objectMapper.registerModule(localDateTimeModule())
+        return objectMapper
+    }
 
-	@Bean(name = ["localDateTimeModule"])
-	fun localDateTimeModule(): SimpleModule? {
-		val module = SimpleModule()
-		module.addSerializer(LocalDateTime::class.java, LocalDateTimeSerializer())
-		module.addDeserializer(LocalDateTime::class.java, LocalDateTimeDeserializer())
-		return module
-	}
+    @Bean(name = ["localDateTimeModule"])
+    fun localDateTimeModule(): SimpleModule? {
+        val module = SimpleModule()
+        module.addSerializer(LocalDateTime::class.java, LocalDateTimeSerializer())
+        module.addDeserializer(LocalDateTime::class.java, LocalDateTimeDeserializer())
+        return module
+    }
 }

@@ -13,27 +13,27 @@ import java.time.format.DateTimeFormatter
 
 @Configuration
 class WebMvcConfig(
-	private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper
 ) : WebMvcConfigurer {
 
-	override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-		registry.addResourceHandler("/static/**")
-			.addResourceLocations("classpath:/static/")
-	}
+    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        registry.addResourceHandler("/static/**")
+            .addResourceLocations("classpath:/static/")
+    }
 
-	@Bean
-	fun mappingJackson2HttpMessageConverter(): MappingJackson2HttpMessageConverter {
-		return MappingJackson2HttpMessageConverter(objectMapper)
-	}
+    @Bean
+    fun mappingJackson2HttpMessageConverter(): MappingJackson2HttpMessageConverter {
+        return MappingJackson2HttpMessageConverter(objectMapper)
+    }
 
-	override fun addFormatters(formatterRegistry: FormatterRegistry) {
-		val dateTimeFormatterRegistrar = DateTimeFormatterRegistrar()
+    override fun addFormatters(formatterRegistry: FormatterRegistry) {
+        val dateTimeFormatterRegistrar = DateTimeFormatterRegistrar()
 
-		dateTimeFormatterRegistrar.setDateFormatter(DateTimeFormatter.ISO_DATE)
-		dateTimeFormatterRegistrar.setDateTimeFormatter(DateTimeFormatter.ISO_DATE_TIME)
-		dateTimeFormatterRegistrar.registerFormatters(formatterRegistry)
+        dateTimeFormatterRegistrar.setDateFormatter(DateTimeFormatter.ISO_DATE)
+        dateTimeFormatterRegistrar.setDateTimeFormatter(DateTimeFormatter.ISO_DATE_TIME)
+        dateTimeFormatterRegistrar.registerFormatters(formatterRegistry)
 
-		formatterRegistry.addConverter(LocalDateTimeConverter())
-	}
+        formatterRegistry.addConverter(LocalDateTimeConverter())
+    }
 
 }

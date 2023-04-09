@@ -1,6 +1,16 @@
+buildscript {
+  repositories {
+    gradlePluginPortal()
+  }
+
+  dependencies {
+    classpath "com.github.node-gradle:gradle-node-plugin:3.5.1"
+  }
+}
+
 def webpack = project.findProperty('webpack') ?: false
 if (webpack.toBoolean()) {
-  apply plugin: "com.github.node-gradle.node"
+  apply plugin: 'com.github.node-gradle.node'
 
   node {
     version = '14.17.0'

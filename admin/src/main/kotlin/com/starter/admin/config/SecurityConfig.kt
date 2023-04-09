@@ -33,6 +33,8 @@ class SecurityConfig(private val securityProperty: SecurityProperty) {
             .and()
             .csrf().disable()
             .formLogin().disable()
+            .authorizeHttpRequests().anyRequest()
+            .permitAll()
         http.headers().defaultsDisabled()
             .cacheControl()
             .and()

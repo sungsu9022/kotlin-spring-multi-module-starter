@@ -6,8 +6,7 @@
   "scripts": {
     "watch": "webpack-dev-server --config webpack.config.local.js --progress --inline --hot",
     "fix": "prettier src/main/webapp/**/*.{js,vue} --write",
-    "build:product": "webpack --env.product --progress --config=./webpack.config.product.js",
-    "download:message": "node ./support-script/download_messagefile.js"
+    "build:product": "webpack --env.product --progress --config=./webpack.config.product.js"
   },
   "private": true,
   "author": "sungsu9022@naver.com",

@@ -1,17 +1,30 @@
-# react-kotlin-spring-boot-starter
+# Kotlin-spring-multi-module-starter
 
 ## Tech Stack
-
+### Back-end
 - spring boot 3.0.5
 - kotlin 1.8.10
-- spring-data-jpa
-- MySQL database ( docker-compose )
-- caffeine Local Cache
-- mapstruct
+- Spring-Data-Jpa
+- MySQL( docker-compose )
+- Caffeine Local Cache
+- Mapstruct
+- CoroutinVersion
+- Webflux/Jetty(for Spring6 HTPP Interface)
+- Kotest
+
+### Front-end
+ - webpack
+ - vue.js
 
 ## Build
 
-``` 
-
-
+### 1. admin
+``` sh
+./gradlew admin:build -Pprofile=local
 ```
+
+### 2. api
+``` sh
+./gradlew api:build -Pprofile=local
+```
+

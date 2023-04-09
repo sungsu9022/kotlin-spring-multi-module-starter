@@ -13,9 +13,9 @@ spring:
   devtools:
     livereload:
       enabled: true
-#  thymeleaf:
-#    cache: false
-#    prefix: file:src/main/resources/templates/
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
 
 
 ---

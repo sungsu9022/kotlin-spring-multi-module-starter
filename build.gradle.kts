@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 
 plugins {
-    val kotlinVersion = "1.8.10"
-    val springBootVersion = "3.0.5"
+    val kotlinVersion = "1.8.22"
+    val springBootVersion = "3.1.2"
     val ktLintVersion = "11.3.1"
 
     id("org.springframework.boot") version springBootVersion

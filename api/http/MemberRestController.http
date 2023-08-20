@@ -1,7 +1,7 @@
 
 
 ### crate member
-POST /api/members/
+POST /api/members
 Host: localhost:9901
 Content-Type: application/json
 
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### get member
-GET /api/members/1850fda2-1ff7-4970-b34c-04dc8f6a78cb
+GET /api/members/3cb62d2e-b613-4fd2-b252-73a8970efc73
 Host: localhost:9901
 
 ### get members by name

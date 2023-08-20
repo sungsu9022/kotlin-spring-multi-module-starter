@@ -59,9 +59,7 @@ cache/
 
 /logs/
 
-api/build/
-admin/build/
-core/build/
+build
 
 cache
 out

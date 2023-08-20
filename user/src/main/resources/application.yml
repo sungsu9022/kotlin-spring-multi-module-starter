@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: starter-user
+  messages:
+    encoding: UTF-8
+  profiles:
+    include:
+      - rdb
+
+server:
+  port: 9902
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+  tomcat:
+    accesslog:
+      enabled: true
+      directory:
+      prefix: user.access-log
+    basedir: logs/tomcat/user/
+
+springdoc:
+  packagesToScan: com.starter.api.app
+  api-docs:
+    enabled: true
+    path: /document/api-docs
+  swagger-ui:
+    enabled: true
+    path: /document/swagger-ui.html
+
+starter:
+  security:
+    swagger-ui-path: /document/swagger-ui/index.html
+
+sleuth:
+  sampler:
+    probability: 1.0
+

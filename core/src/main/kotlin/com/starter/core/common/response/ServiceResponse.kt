@@ -13,37 +13,25 @@ open class BaseResponse<T>(
 class SuccessResponse<T : Any?>(status: Status, result: T) : BaseResponse<T>(true, status, result) {
     companion object {
         private const val OK = "ok"
-        private val DEFAULT = create(Status.DEFAULT, OK)
+        val DEFAULT = of(Status.DEFAULT, OK)
 
-        fun getDefault(): ServiceResponse {
-            return DEFAULT
+        fun <T> of(results: T): SuccessResponse<T> {
+            return SuccessResponse(Status.DEFAULT, results)
         }
 
-        fun <T> create(results: T): ServiceResponse {
-            return SuccessResponse(Status(ResponseCode.OK, OK), results)
-        }
-
-        fun <T> create(results: Collection<T>): ServiceResponse {
-            return SuccessResponse(Status(ResponseCode.OK, OK), results);
-        }
-
-        fun <T> create(status: Status, results: T): ServiceResponse {
+        fun <T> of(status: Status, results: T): SuccessResponse<T> {
             return SuccessResponse(status, results);
-        }
-
-        fun create(status: Status): ServiceResponse {
-            return SuccessResponse(status, null)
         }
     }
 }
 
 class FailureResponse(val status: Status) : ServiceResponse {
     companion object {
-        fun create(responseCode: ResponseCode, message: String): ServiceResponse {
+        fun create(responseCode: ResponseCode, message: String): FailureResponse {
             return FailureResponse(Status(responseCode, message))
         }
 
-        fun create(responseCode: ResponseCode): ServiceResponse {
+        fun create(responseCode: ResponseCode): FailureResponse {
             return FailureResponse(Status(responseCode, ""))
         }
     }

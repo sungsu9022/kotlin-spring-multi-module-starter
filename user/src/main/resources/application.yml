@@ -6,6 +6,9 @@ spring:
   profiles:
     include:
       - rdb
+      - jasypt
+      - common
+      - security
 
 server:
   port: 9902
@@ -21,19 +24,10 @@ server:
     basedir: logs/tomcat/user/
 
 springdoc:
-  packagesToScan: com.starter.api.app
+  packagesToScan: com.starter.user.app
   api-docs:
     enabled: true
     path: /document/api-docs
   swagger-ui:
     enabled: true
     path: /document/swagger-ui.html
-
-starter:
-  security:
-    swagger-ui-path: /document/swagger-ui/index.html
-
-sleuth:
-  sampler:
-    probability: 1.0
-

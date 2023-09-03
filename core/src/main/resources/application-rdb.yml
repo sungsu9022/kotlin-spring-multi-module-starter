@@ -28,4 +28,13 @@ spring:
         generate_statistics: true
         default_batch_fetch_size: 1000
 
---- # local
+
+--- # dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: ENC(uTpr9wS8B4HWklt5YeLkDuVj/9D0cmORve7fNWNdoFcd2zEeZKNuY4jR40Xf+n+w)
+    username: ENC(brcWzTwMJsoFqKjxw+vYvw==)
+    password: ENC(kzLMIJzxqettg6CK2XqUK/TLqdp89kFyfJTTLmf7VdM=)

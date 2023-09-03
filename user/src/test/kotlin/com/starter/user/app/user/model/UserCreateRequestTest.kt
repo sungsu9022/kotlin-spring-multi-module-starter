@@ -13,10 +13,9 @@ internal class UserCreateRequestTest : AnnotationSpec() {
     fun getJson() {
         val userCreateRequest = UserCreateRequest(
             email = "sungsu9022@naver.com",
-            userName = "sungsu"
+            userName = "sungsu",
         )
 
-        logger.debug { JsonUtil.toJson(userCreateRequest) }
+        logger.info { JsonUtil.toJson(userCreateRequest) }
     }
-
 }

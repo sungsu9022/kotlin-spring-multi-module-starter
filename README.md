@@ -23,8 +23,15 @@
 ./gradlew admin:build -Pprofile=local
 ```
 
-### 2. api
+### 2. user 
 ``` sh
 ./gradlew api:build -Pprofile=local
 ```
 
+## Intellij Plugins
+### Back-end
+- kotest
+- ktlint
+
+### Front-end
+- vue.js 

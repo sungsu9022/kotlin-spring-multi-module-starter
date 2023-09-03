@@ -21,7 +21,4 @@ dependencies {
     // flyway
     implementation("org.flywaydb:flyway-core:$flywayVersion")
     implementation("org.flywaydb:flyway-mysql:$flywayVersion")
-
-    implementation("org.springframework.boot:spring-boot-starter-security")
-
 }

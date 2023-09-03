@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter
 
 @Configuration
 class WebMvcConfig(
-    private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
 ) : WebMvcConfigurer {
 
     @Bean
@@ -26,5 +26,4 @@ class WebMvcConfig(
         dateTimeFormatterRegistrar.setDateTimeFormatter(DateTimeFormatter.ISO_DATE_TIME)
         dateTimeFormatterRegistrar.registerFormatters(formatterRegistry)
     }
-
 }

@@ -90,7 +90,8 @@ subprojects {
     val querydslVersion = "5.0.0"
     val hibernateUtilsVersion = "3.2.0"
     val mysqlConnectorVersion = "8.0.32"
-    val coroutinVersion = "1.6.4"
+    val coroutineVersion = "1.6.4"
+    val jasyptVersion = "3.0.5"
 
     dependencyManagement {
         imports {
@@ -110,6 +111,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-validation")
         implementation("org.springframework.boot:spring-boot-starter-cache")
         implementation("org.springframework.boot:spring-boot-starter-webflux")
+        implementation("org.springframework.boot:spring-boot-starter-security")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -137,8 +139,10 @@ subprojects {
         implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
         implementation("com.github.ben-manes.caffeine:caffeine:$caffeineVersion")
         implementation("org.eclipse.jetty:jetty-reactive-httpclient:$jettyHttpClientVersion")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinVersion")
-        runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$coroutinVersion")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+        runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$coroutineVersion")
+
+        implementation("com.github.ulisesbocchio:jasypt-spring-boot:$jasyptVersion")
 
         // test
         testImplementation("org.springframework.boot:spring-boot-starter-test")

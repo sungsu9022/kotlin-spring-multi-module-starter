@@ -64,3 +64,5 @@ build
 cache
 out
 db/
+
+.env

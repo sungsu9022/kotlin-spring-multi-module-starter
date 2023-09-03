@@ -5,7 +5,10 @@ spring:
     encoding: UTF-8
   profiles:
     include:
-      - core
+      - common
+      - jasypt
+      - rdb
+      - security
   mvc:
     hiddenmethod:
       filter:

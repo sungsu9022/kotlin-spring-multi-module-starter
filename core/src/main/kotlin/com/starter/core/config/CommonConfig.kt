@@ -1,4 +1,4 @@
-package com.starter.user.config
+package com.starter.core.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
@@ -6,13 +6,17 @@ import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.starter.core.common.serializer.LocalDateTimeDeserializer
 import com.starter.core.common.serializer.LocalDateTimeSerializer
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
 import java.time.LocalDateTime
 
+@Profile(Profiles.COMMON)
 @Configuration
-class ApplicationConfig {
+@ConfigurationPropertiesScan("com.starter")
+class CommonConfig {
 
     @Bean
     fun objectMapper(): ObjectMapper {

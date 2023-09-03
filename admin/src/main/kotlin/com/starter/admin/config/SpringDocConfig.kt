@@ -15,11 +15,11 @@ class SpringDocConfig {
             .info(
                 Info()
                     .title("starter ADMIN document")
-                    .version("v1.0.0")
+                    .version("v1.0.0"),
             )
             .addServersItem(
                 Server()
-                    .url("/")
+                    .url("/"),
             )
     }
 }

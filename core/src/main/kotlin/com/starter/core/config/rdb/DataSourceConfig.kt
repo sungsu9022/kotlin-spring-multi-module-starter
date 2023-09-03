@@ -1,6 +1,7 @@
-package com.starter.user.config
+package com.starter.core.config.rdb
 
 import com.querydsl.jpa.impl.JPAQueryFactory
+import com.starter.core.config.Profiles
 import com.zaxxer.hikari.HikariDataSource
 import jakarta.persistence.EntityManager
 import jakarta.persistence.EntityManagerFactory
@@ -14,6 +15,7 @@ import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
+import org.springframework.context.annotation.Profile
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer
@@ -23,6 +25,7 @@ import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import javax.sql.DataSource
 
+@Profile(Profiles.RDB)
 @Configuration
 @EnableJpaRepositories(basePackages = ["com.starter"])
 @EntityScan("com.starter")
@@ -30,7 +33,7 @@ import javax.sql.DataSource
 @EnableJpaAuditing
 class DataSourceConfig(
     private val jpaProperties: JpaProperties,
-    private val hibernateProperties: HibernateProperties
+    private val hibernateProperties: HibernateProperties,
 ) {
     companion object {
         const val PERSISTENCE_UNIT = "entityManager"
@@ -41,7 +44,6 @@ class DataSourceConfig(
     fun dataSourceProperties(): DataSourceProperties {
         return DataSourceProperties()
     }
-
 
     @Bean
     @Primary
@@ -56,8 +58,7 @@ class DataSourceConfig(
     fun entityManagerFactory(
         builder: EntityManagerFactoryBuilder,
         dataSource: DataSource,
-
-        ): LocalContainerEntityManagerFactoryBean {
+    ): LocalContainerEntityManagerFactoryBean {
         val properties = hibernateProperties.determineHibernateProperties(jpaProperties.properties, HibernateSettings())
 
         return builder.dataSource(dataSource)

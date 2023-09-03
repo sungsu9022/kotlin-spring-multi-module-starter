@@ -1,8 +1,9 @@
-package com.starter.user.config
+package com.starter.core.config.security
 
-import com.starter.user.config.property.SecurityProperty
+import com.starter.core.config.Profiles
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -13,10 +14,10 @@ import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import java.time.Duration
 
-
+@Profile(Profiles.SECURITY)
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(private val securityProperty: SecurityProperty) {
+class SecurityConfig(private val securityProperties: SecurityProperties) {
     companion object {
         val CORS_ALLOWED_METHODS = listOf(
             HttpMethod.GET.toString(),
@@ -48,18 +49,16 @@ class SecurityConfig(private val securityProperty: SecurityProperty) {
         return http.build()
     }
 
-
-//	fun configure(web: WebSecurity) {
-//		val ignoreAntMatchers: MutableList<String> = ArrayList()
-//		val swaggerUIPath: String = securityProperty.swaggerUIPath
-//		if (StringUtils.isNotBlank(swaggerUIPath)) {
-//			ignoreAntMatchers.add(swaggerUIPath)
-//		}
+// 	fun configure(web: WebSecurity) {
+// 		val ignoreAntMatchers: MutableList<String> = ArrayList()
+// 		val swaggerUIPath: String = securityProperty.swaggerUIPath
+// 		if (StringUtils.isNotBlank(swaggerUIPath)) {
+// 			ignoreAntMatchers.add(swaggerUIPath)
+// 		}
 //
-//		web.ignoring()
-//			.antMatchers(*ignoreAntMatchers.toTypedArray())
-//	}
-
+// 		web.ignoring()
+// 			.antMatchers(*ignoreAntMatchers.toTypedArray())
+// 	}
 
     private fun corsConfigurationSource(): CorsConfigurationSource {
         val corsConfiguration = CorsConfiguration()
@@ -72,5 +71,4 @@ class SecurityConfig(private val securityProperty: SecurityProperty) {
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration)
         return urlBasedCorsConfigurationSource
     }
-
 }

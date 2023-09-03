@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter
 
 @Configuration
 class WebMvcConfig(
-    private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
 ) : WebMvcConfigurer {
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
@@ -35,5 +35,4 @@ class WebMvcConfig(
 
         formatterRegistry.addConverter(LocalDateTimeConverter())
     }
-
 }

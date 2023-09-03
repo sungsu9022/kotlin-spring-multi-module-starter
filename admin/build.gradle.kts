@@ -12,7 +12,6 @@ dependencies {
     implementation(project(":core"))
     testImplementation(project(":core"))
 
-    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("com.github.node-gradle:gradle-node-plugin:3.5.1")
 

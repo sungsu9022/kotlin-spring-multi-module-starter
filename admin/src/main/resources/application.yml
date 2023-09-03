@@ -5,7 +5,10 @@ spring:
     encoding: UTF-8
   profiles:
     include:
-      - core
+      - common
+      - jasypt
+      - rdb
+      - security
   mvc:
     hiddenmethod:
       filter:
@@ -13,7 +16,7 @@ spring:
     static-path-pattern: /static/**
 
 server:
-  port: 9902
+  port: 9901
   error:
     whitelabel:
       enabled: false
@@ -22,5 +25,5 @@ server:
     accesslog:
       enabled: true
       directory:
-      prefix: admin-access-log
+      prefix: admin.access-log
     basedir: logs/tomcat/admin/

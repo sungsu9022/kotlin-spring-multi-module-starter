@@ -1,0 +1,75 @@
+### 3.3.1 analyze API
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "analyzer": "standard",
+  "text": "Hello, HELLO, World!"
+}
+
+### 3.3.2 캐릭터 필터
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "char_filter": ["html_strip"],
+  "text": "<p>I&apos;m so <b>happy</b>!</p>"
+}
+
+### 3.3.3 토크나이저
+### keyword 토크나이저
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "tokenizer": "keyword",
+  "text": "Hello, HELLO, World!"
+}
+
+
+### ngram 토크나이저
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "tokenizer": {
+    "type": "ngram",
+    "min_gram": 3,
+    "max_gram": 4
+  },
+  "text": "Hello, World!"
+}
+
+### ngram 토크나이저2
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "tokenizer": {
+    "type": "ngram",
+    "min_gram": 3,
+    "max_gram": 4,
+    "token_chars": ["letter"]
+  },
+  "text": "Hello, World!"
+}
+
+### edge_ngram 토크나이저
+POST /_analyze
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "tokenizer": {
+    "type": "edge_ngram",
+    "min_gram": 3,
+    "max_gram": 4,
+    "token_chars": ["letter"]
+  },
+  "text": "Hello, World!"
+}

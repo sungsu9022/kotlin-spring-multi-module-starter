@@ -1,10 +1,7 @@
 logging:
   level:
     root: DEBUG
-    org:
-      springframework:
-        boot:
-          autoconfigure: ERROR
+    org.springframeworkboot.autoconfigure: ERROR
 
 spring:
   config:

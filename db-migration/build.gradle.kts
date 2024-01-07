@@ -1,6 +1,6 @@
 tasks {
     application {
-        mainClass.set("com.starter.dbmigration.DbMigrationApplicationKt")
+        mainClass.set("com.starter.dbmigration.DbMigrationApplication")
     }
 
     bootJar {

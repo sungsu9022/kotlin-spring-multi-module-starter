@@ -64,5 +64,7 @@ build
 cache
 out
 db/
+file-dir/
+download/
 
 .env

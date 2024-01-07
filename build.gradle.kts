@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 
 plugins {
-    val kotlinVersion = "1.8.22"
-    val springBootVersion = "3.1.2"
+    val kotlinVersion = "1.9.21"
+    val springBootVersion = "3.2.1"
     val ktLintVersion = "11.3.1"
 
     id("org.springframework.boot") version springBootVersion
@@ -106,7 +106,7 @@ subprojects {
     }
 
     dependencies {
-        // Spring BOot, Kotlin
+        // Spring Boot, Kotlin
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-validation")
         implementation("org.springframework.boot:spring-boot-starter-cache")

@@ -1,0 +1,11 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
+
+springdoc:
+  api-docs:
+    enabled: false

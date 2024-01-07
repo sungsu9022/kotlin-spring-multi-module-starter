@@ -10,4 +10,3 @@ CREATE TABLE IF NOT EXISTS `user`
   updated_at   datetime(6)  null,
   PRIMARY KEY (id)
 ) engine = InnoDB;
-

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: starter-file
+  messages:
+    encoding: UTF-8
+  profiles:
+    include:
+      - rdb
+      - jasypt
+      - common
+      - security
+
+server:
+  port: 9903
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+  tomcat:
+    accesslog:
+      enabled: true
+      directory:
+      prefix: user.access-log
+    basedir: logs/tomcat/file/
+
+springdoc:
+  packagesToScan: com.starter.file.app
+  api-docs:
+    enabled: true
+    path: /document/api-docs
+  swagger-ui:
+    enabled: true
+    path: /document/swagger-ui.html

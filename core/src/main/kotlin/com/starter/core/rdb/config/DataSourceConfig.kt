@@ -1,7 +1,6 @@
 package com.starter.core.rdb.config
 
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.starter.core.common.config.Profiles
 import com.zaxxer.hikari.HikariDataSource
 import jakarta.persistence.EntityManager
 import jakarta.persistence.EntityManagerFactory
@@ -13,9 +12,9 @@ import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
-import org.springframework.context.annotation.Profile
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer
@@ -25,10 +24,10 @@ import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import javax.sql.DataSource
 
-@Profile(Profiles.RDB)
 @Configuration
-@EnableJpaRepositories(basePackages = ["com.starter"])
-@EntityScan("com.starter")
+@EnableJpaRepositories(basePackages = ["com.starter.core.rdb"])
+@EntityScan("com.starter.core.rdb")
+@ComponentScan("com.starter.core.rdb")
 @EnableTransactionManagement
 @EnableJpaAuditing
 class DataSourceConfig(

@@ -6,11 +6,10 @@ import java.nio.file.Path
 
 @Service
 class FileUploadService {
-
     fun uploadBy(
         path: Path,
         fileName: String,
-        file: MultipartFile
+        file: MultipartFile,
     ) {
         // TODO path.
         // 파일 업로드 처리

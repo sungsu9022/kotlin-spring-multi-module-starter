@@ -1,8 +1,11 @@
 package com.starter.file.app.file.controller
 
-import com.starter.core.common.response.SuccessResponse
-import com.starter.file.app.file.facade.FileUploadFacadeService
-import com.starter.file.app.file.model.FileUploadRequest
+import com.starter.file.app.file.facade.FileUploadFacade
+import com.starter.file.app.file.models.FileResponse
+import com.starter.file.app.file.models.FileUploadRequest
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -10,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/files/upload")
 class FileUploadController(
-    private val fileUploadFacadeService: FileUploadFacadeService,
+    private val fileUploadFacade: FileUploadFacade,
 ) {
-
-    @PostMapping
-    fun uploadFile(fileUploadRequest: FileUploadRequest): SuccessResponse<String> {
-        fileUploadFacadeService.uploadFile(fileUploadRequest)
-        return SuccessResponse.DEFAULT
+    @PostMapping(consumes = [MediaType.MULTIPART_FORM_DATA_VALUE] )
+    @Operation(description = "파일 업로드 API")
+    fun uploadFile(@Parameter fileUploadRequest: FileUploadRequest): FileResponse {
+        val fileResponse = fileUploadFacade.uploadFile(fileUploadRequest)
+        return fileResponse
     }
 }

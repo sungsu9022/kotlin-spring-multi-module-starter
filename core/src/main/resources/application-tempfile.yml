@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: tempfile
+
+--- # local
+
+temp-file:
+  path: file-dir/temp/
+

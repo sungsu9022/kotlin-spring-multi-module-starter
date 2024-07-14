@@ -1,17 +1,18 @@
 package com.starter.core.jasypt.config
 
-import com.starter.core.common.config.Profiles
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.jasypt.encryption.StringEncryptor
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 
-@Profile(Profiles.JASYPT)
 @Configuration
 @EnableEncryptableProperties
+@ConfigurationPropertiesScan("com.starter.core.jasypt")
+@ComponentScan("com.starter.core.jasypt")
 class JasyptConfig(
     private val jasyptProperties: JasyptProperties,
 ) {

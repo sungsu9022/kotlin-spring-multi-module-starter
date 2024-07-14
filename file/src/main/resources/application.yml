@@ -3,12 +3,17 @@ spring:
     name: starter-file
   messages:
     encoding: UTF-8
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
   profiles:
     include:
       - rdb
       - jasypt
       - common
       - security
+      - s3
 
 server:
   port: 9903

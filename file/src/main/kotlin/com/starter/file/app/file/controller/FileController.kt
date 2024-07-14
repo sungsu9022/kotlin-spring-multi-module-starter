@@ -1,6 +1,5 @@
 package com.starter.file.app.file.controller
 
-import com.starter.core.common.response.SuccessResponse
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -11,7 +10,7 @@ class FileController(
 ) {
 
     @GetMapping
-    fun getFiles(fileId: Long): SuccessResponse<String> {
-        return SuccessResponse.DEFAULT
+    fun getFiles(fileId: Long): String {
+        return ""
     }
 }

@@ -1,10 +1,10 @@
 package com.starter.user.app.user.service
 
 import com.starter.core.common.exception.ErrorCode
-import com.starter.core.common.exception.ServiceException
+import com.starter.core.common.exception.StarterException
 import com.starter.core.rdb.domain.user.models.UserMapper
 import com.starter.core.rdb.domain.user.models.UserVO
-import com.starter.core.rdb.domain.user.repository.User
+import com.starter.core.rdb.domain.user.repository.UserEntity
 import com.starter.core.rdb.domain.user.repository.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -18,7 +18,7 @@ class UserService(
     fun getByUuid(uuid: String): UserVO {
         return repository.findByUuid(uuid)
             ?.let { mapper.convertToTarget(it) }
-            ?: throw ServiceException(ErrorCode.NOT_FOUND)
+            ?: throw StarterException(ErrorCode.NOT_FOUND)
     }
 
     fun getUsersByName(userName: String): List<UserVO> {
@@ -27,8 +27,8 @@ class UserService(
     }
 
     @Transactional
-    fun save(user: User): UserVO {
-        val saved = repository.save(user)
+    fun save(userEntity: UserEntity): UserVO {
+        val saved = repository.save(userEntity)
         return mapper.convertToTarget(saved)
     }
 }

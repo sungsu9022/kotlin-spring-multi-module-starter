@@ -90,7 +90,7 @@ subprojects {
     val querydslVersion = "5.0.0"
     val hibernateUtilsVersion = "3.2.0"
     val mysqlConnectorVersion = "8.0.32"
-    val coroutineVersion = "1.6.4"
+    val coroutineVersion = "1.8.1"
     val jasyptVersion = "3.0.5"
 
     dependencyManagement {
@@ -141,6 +141,7 @@ subprojects {
         implementation("org.eclipse.jetty:jetty-reactive-httpclient:$jettyHttpClientVersion")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
         runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$coroutineVersion")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$coroutineVersion")
 
         implementation("com.github.ulisesbocchio:jasypt-spring-boot:$jasyptVersion")
 
@@ -179,9 +180,20 @@ subprojects {
         annotation("jakarta.persistence.Embeddable")
         annotation("com.starter.core.common.annotations.AllOpen")
     }
+
+    tasks.clean {
+        delete("out")
+    }
 }
 
 tasks {
     bootJar { enabled = false }
     jar { enabled = false }
+}
+
+ktlint {
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
 }

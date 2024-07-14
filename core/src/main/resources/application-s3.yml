@@ -1,0 +1,17 @@
+aws:
+  kms:
+    kms-id: test
+  s3:
+    credentials:
+      bucket: test-starter
+
+---
+spring.config.activate.on-profile: local
+
+aws:
+  s3:
+    credentials:
+      profile-name: test-starter
+      region: ap-northeast-2
+      bucket: test-starter
+

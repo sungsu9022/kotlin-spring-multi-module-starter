@@ -1,12 +1,17 @@
 package com.starter.dbmigration
 
+import com.starter.core.jasypt.config.JasyptConfig
+import com.starter.core.rdb.config.DataSourceConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
+import org.springframework.context.annotation.Import
 
 @ConfigurationPropertiesScan
-@SpringBootApplication(
-    scanBasePackages = ["com.starter.dbmigration", "com.starter.core"],
+@SpringBootApplication
+@Import(
+    JasyptConfig::class,
+    DataSourceConfig::class
 )
 class DbMigrationApplication
 

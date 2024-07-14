@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: clients
+
+clients:
+  internal:
+    file: http://localhost:9903
+
+--- # local
+
+logging:
+  level:
+    reactor.netty.http.client: INFO
+

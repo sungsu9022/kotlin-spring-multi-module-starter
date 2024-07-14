@@ -9,7 +9,8 @@ spring:
       - jasypt
       - common
       - security
-
+      - clients
+      - tempfile
 server:
   port: 9902
   error:

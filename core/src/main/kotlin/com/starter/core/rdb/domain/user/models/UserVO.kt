@@ -12,4 +12,4 @@ data class UserVO(
     override val deleted: Boolean,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
-) : UserInterface
+) : User

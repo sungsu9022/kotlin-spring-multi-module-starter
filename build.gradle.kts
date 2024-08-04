@@ -2,12 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 
 plugins {
-    val kotlinVersion = "1.9.21"
-    val springBootVersion = "3.2.1"
+    val kotlinVersion = "1.9.24"
+    val springBootVersion = "3.3.2"
     val ktLintVersion = "11.3.1"
 
     id("org.springframework.boot") version springBootVersion
-    id("io.spring.dependency-management") version "1.1.0"
+    id("io.spring.dependency-management") version "1.1.6"
 
     id("com.adarshr.test-logger") version "3.2.0"
     id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
@@ -21,7 +21,7 @@ plugins {
     kotlin("kapt") version kotlinVersion
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 allOpen {
     annotation("com.starter.core.common.annotations.AllOpen")
@@ -42,7 +42,7 @@ allprojects {
     tasks.withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=all")
-            jvmTarget = "17"
+            jvmTarget = "21"
         }
     }
 

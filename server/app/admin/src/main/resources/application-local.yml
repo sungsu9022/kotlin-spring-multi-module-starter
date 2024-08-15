@@ -10,9 +10,13 @@ spring:
   config:
     activate:
       on-profile: local
-  devtools:
-    livereload:
-      enabled: true
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
+  flyway:
+    locations: flyway/migrations
+    table: admin_flyway_schema_history
+    enabled: true
+    url: jdbc:mysql://localhost:3306/starter
+    encoding: UTF-8
+    user: starter
+    password: starter
+    baseline-version: 0
+    baseline-on-migrate: true

@@ -2,8 +2,6 @@ rootProject.name = 'starter'
 
 include 'server:core'
 include 'server:app:admin'
-include 'server:app:db-migration'
 include 'server:app:file'
-include 'server:app:user'
 
 

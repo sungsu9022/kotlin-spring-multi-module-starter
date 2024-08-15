@@ -1,9 +1,0 @@
-logging:
-  level:
-    root: DEBUG
-    org.springframeworkboot.autoconfigure: ERROR
-
-spring:
-  config:
-    activate:
-      on-profile: dev

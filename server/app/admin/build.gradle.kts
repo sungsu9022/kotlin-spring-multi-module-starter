@@ -13,12 +13,12 @@ tasks {
 }
 
 dependencies {
-    val flywayVersion = "9.21.1"
+    val jwtVersion = "0.11.5"
 
     implementation(project(":server:core"))
     testImplementation(project(":server:core"))
 
-    // flyway
-    implementation("org.flywaydb:flyway-core:$flywayVersion")
-    implementation("org.flywaydb:flyway-mysql:$flywayVersion")
+    implementation("io.jsonwebtoken:jjwt-api:$jwtVersion")
+    implementation("io.jsonwebtoken:jjwt-impl:$jwtVersion")
+    implementation("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
 }

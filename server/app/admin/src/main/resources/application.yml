@@ -9,11 +9,8 @@ spring:
       - jasypt
       - rdb
       - security
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-    static-path-pattern: /static/**
+      - clients
+      - tempfile
 
 server:
   port: 9901

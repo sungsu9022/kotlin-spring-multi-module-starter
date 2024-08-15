@@ -92,6 +92,7 @@ subprojects {
     val mysqlConnectorVersion = "8.0.32"
     val coroutineVersion = "1.8.1"
     val jasyptVersion = "3.0.5"
+    val flywayVersion = "9.21.1"
 
     dependencyManagement {
         imports {
@@ -127,6 +128,9 @@ subprojects {
         implementation("com.querydsl:querydsl-core:$querydslVersion")
         implementation("com.querydsl:querydsl-jpa:$querydslVersion:jakarta")
         kapt("com.querydsl:querydsl-apt:$querydslVersion:jakarta")
+        // flyway
+        implementation("org.flywaydb:flyway-core:$flywayVersion")
+        implementation("org.flywaydb:flyway-mysql:$flywayVersion")
 
         // mapstruct
         implementation("org.mapstruct:mapstruct")

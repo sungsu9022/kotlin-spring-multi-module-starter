@@ -6,6 +6,6 @@ spring:
 jasypt:
   encryptor:
     bean: jasyptEncryptor
-    password: ${JASYPT_PASSWORD}
+    password: ${JASYPT_PASSWORD:test_sungsu9022_test}
 
 --- # local

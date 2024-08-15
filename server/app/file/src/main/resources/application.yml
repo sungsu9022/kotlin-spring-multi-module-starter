@@ -14,6 +14,7 @@ spring:
       - common
       - security
       - s3
+      - tempfile
 
 server:
   port: 9903

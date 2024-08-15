@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 interface FileSystemRotationService {
     companion object : KLogging() {
         private const val DEFAULT_DIR_DELETE_HOURS = 1L
-        private val DEFAULT_FILE_CREATED_AT_REG_EXP: Regex = "${TempFileSystemProcessor.DEFAULT_PRIVATE_PATH}.+_(\\d{14}).*".toRegex()
+        private val DEFAULT_FILE_CREATED_AT_REG_EXP: Regex = "${TempFileSystemRotationService.DEFAULT_PRIVATE_PATH}.+_(\\d{14}).*".toRegex()
     }
 
     fun getRotationTargetPath(): Path

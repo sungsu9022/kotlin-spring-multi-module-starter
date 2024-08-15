@@ -1,9 +1,9 @@
 rootProject.name = 'starter'
 
-include 'core'
-include 'admin'
-include 'db-migration'
-include 'file'
-include 'user'
+include 'server:core'
+include 'server:app:admin'
+include 'server:app:db-migration'
+include 'server:app:file'
+include 'server:app:user'
 
 

@@ -1,0 +1,11 @@
+logging:
+  level:
+    root: INFO
+    com.starter: DEBUG
+    org:hibernate:
+      SQL: debug
+      type.descriptor.sql: trace
+
+
+file:
+  upload-path: file-dir/upload/

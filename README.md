@@ -13,25 +13,22 @@
 - Kotest
 
 ### Front-end
- - webpack
- - vue.js
+ - React
+ - MUI
 
 ## Build
 
 ### 1. admin
 ``` sh
-./gradlew admin:build -Pprofile=local
+./gradlew server:admin:build -Pprofile=local
 ```
 
-### 2. user 
+### 2. file 
 ``` sh
-./gradlew api:build -Pprofile=local
+./gradlew server:file:build -Pprofile=local
 ```
 
 ## Intellij Plugins
 ### Back-end
 - kotest
 - ktlint
-
-### Front-end
-- vue.js 

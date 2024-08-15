@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: starter-admin
+  messages:
+    encoding: UTF-8
+  profiles:
+    include:
+      - common
+      - jasypt
+      - rdb
+      - security
+      - clients
+      - tempfile
+
+server:
+  port: 9901
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+  tomcat:
+    accesslog:
+      enabled: true
+      directory:
+      prefix: admin.access-log
+    basedir: logs/server/admin/

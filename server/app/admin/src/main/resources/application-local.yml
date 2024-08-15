@@ -1,0 +1,22 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  flyway:
+    locations: flyway/migrations
+    table: admin_flyway_schema_history
+    enabled: true
+    url: jdbc:mysql://localhost:3306/starter
+    encoding: UTF-8
+    user: starter
+    password: starter
+    baseline-version: 0
+    baseline-on-migrate: true

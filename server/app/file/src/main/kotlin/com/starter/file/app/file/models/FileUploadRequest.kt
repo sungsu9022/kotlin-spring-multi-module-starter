@@ -1,6 +1,6 @@
 package com.starter.file.app.file.models
 
-import com.starter.core.rdb.domain.file.models.FileType
+import com.starter.core.models.file.FileType
 import org.springframework.web.multipart.MultipartFile
 
 sealed interface UploadRequest {

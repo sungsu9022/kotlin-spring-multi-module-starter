@@ -2,6 +2,7 @@ package com.starter.core.clients.internal.file
 
 import com.starter.core.clients.common.WebClientFactory
 import com.starter.core.clients.internal.InternalClientsProperties
+import com.starter.core.clients.internal.file.api.FileDownloadApiClient
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.Bean
@@ -26,7 +27,7 @@ class FileClientConfig(
     }
 
     @Bean
-    fun fileApiClient(@Qualifier(FILE_WEB_CLIENT) webClient: WebClient): FileApiClient {
-        return FileApiClient.create(webClient)
+    fun fileDownloadApiClient(@Qualifier(FILE_WEB_CLIENT) webClient: WebClient): FileDownloadApiClient {
+        return FileDownloadApiClient.create(webClient)
     }
 }

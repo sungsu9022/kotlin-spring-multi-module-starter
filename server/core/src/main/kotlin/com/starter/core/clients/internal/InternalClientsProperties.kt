@@ -6,4 +6,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties("clients.internal")
 data class InternalClientsProperties(
     val file: String,
+    val admin: String,
 )

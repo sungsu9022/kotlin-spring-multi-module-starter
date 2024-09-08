@@ -1,19 +1,25 @@
 package com.starter.admin.app.user.facade
 
-import com.starter.admin.app.user.service.UserService
-import com.starter.core.rdb.domain.user.models.UserVO
-import mu.KotlinLogging
+import com.starter.admin.app.user.mapper.UserModelMapper
+import com.starter.admin.service.user.UserService
+import com.starter.core.models.user.UserResponse
+import com.starter.core.models.user.UserSearchRequest
+import mu.KLogging
 import org.springframework.stereotype.Component
 
 @Component
 class UserReadFacade(
     private val userService: UserService,
+    private val modelMapper: UserModelMapper,
 ) {
-    companion object {
-        private val logger = KotlinLogging.logger {}
+    companion object : KLogging()
+
+    fun getUser(uuid: String): UserResponse = userService.getByOrThrow(uuid)
+        .let { modelMapper.toResponse(it) }
+
+    fun getUsers(request: UserSearchRequest): List<UserResponse> {
+        val condition = modelMapper.toCondition(request)
+        return userService.getAllBy(condition)
+            .map { modelMapper.toResponse(it) }
     }
-
-    fun getUser(uuid: String): UserVO = userService.getByUuid(uuid)
-
-    fun getUsers(name: String): List<UserVO> = userService.getUsersByName(name)
 }

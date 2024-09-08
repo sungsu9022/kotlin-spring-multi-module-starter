@@ -1,7 +1,7 @@
 package com.starter.file.app.file.facade
 
-import com.starter.file.app.file.mapper.FileMapper
 import com.starter.file.app.file.mapper.FileMetadataMapper
+import com.starter.file.app.file.mapper.FileModelMapper
 import com.starter.file.app.file.models.FileResponse
 import com.starter.file.app.file.models.FileUploadRequest
 import com.starter.file.app.file.service.FileService
@@ -16,9 +16,9 @@ class FileUploadFacade(
     private val fileSystemService: FileSystemService,
     private val fileService: FileService,
     private val fileMetadataMapper: FileMetadataMapper,
-    private val fileMapper: FileMapper,
+    private val fileMapper: FileModelMapper,
 
-) {
+    ) {
 
     @Transactional
     fun uploadFile(request: FileUploadRequest): FileResponse {

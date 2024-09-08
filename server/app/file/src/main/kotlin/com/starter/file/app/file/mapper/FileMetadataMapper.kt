@@ -1,6 +1,6 @@
 package com.starter.file.app.file.mapper
 
-import com.starter.core.rdb.domain.file.models.FileFormat
+import com.starter.core.models.file.FileFormat
 import com.starter.file.app.file.models.FileUploadRequest
 import com.starter.file.app.file.models.MultipartFileMetadata
 import org.apache.commons.io.FilenameUtils

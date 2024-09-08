@@ -1,6 +1,6 @@
 ### 파일 업로드 (ZIP)
 POST /api/v1/files/upload
-Host: localhost:9903
+Host: localhost:9902
 Content-Type: multipart/form-data; boundary=Webappboundary
 
 --Webappboundary
@@ -27,7 +27,7 @@ REPOSITORY
 
 ### 파일 업로드 (PNG)
 POST /api/v1/files/upload
-Host: localhost:9903
+Host: localhost:9902
 Accept: application/json
 Content-Type: multipart/form-data; boundary=Webappboundary
 

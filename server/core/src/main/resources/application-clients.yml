@@ -5,7 +5,8 @@ spring:
 
 clients:
   internal:
-    file: http://localhost:9903
+    admin: http://localhost:9901
+    file: http://localhost:9902
 
 --- # local
 

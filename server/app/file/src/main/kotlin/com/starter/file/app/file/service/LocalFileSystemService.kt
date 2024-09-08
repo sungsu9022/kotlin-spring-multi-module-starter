@@ -3,7 +3,7 @@ package com.starter.file.app.file.service
 import com.starter.core.common.utils.FilePathUtils
 import com.starter.core.common.utils.FileUtils
 import com.starter.core.common.utils.UUIDUtils
-import com.starter.core.rdb.domain.file.models.FileStorageType
+import com.starter.core.models.file.FileStorageType
 import com.starter.file.app.file.models.FileUploadResult
 import com.starter.file.app.file.models.InputStreamFileMetadata
 import com.starter.file.config.FileProperty

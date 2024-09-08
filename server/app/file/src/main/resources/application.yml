@@ -17,7 +17,7 @@ spring:
       - tempfile
 
 server:
-  port: 9903
+  port: 9902
   error:
     whitelabel:
       enabled: false

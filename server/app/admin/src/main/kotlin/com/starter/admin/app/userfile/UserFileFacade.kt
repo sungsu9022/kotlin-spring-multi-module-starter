@@ -1,6 +1,6 @@
 package com.starter.admin.app.userfile
 
-import com.starter.core.clients.internal.file.FileApiClient
+import com.starter.core.clients.internal.file.api.FileDownloadApiClient
 import com.starter.core.common.exception.ErrorCode
 import com.starter.core.common.exception.StarterException
 import com.starter.core.common.utils.FileUtils
@@ -15,23 +15,23 @@ import reactor.core.publisher.Flux
 
 @Component
 class UserFileFacade(
-    private val fileApiClient: FileApiClient,
+    private val fileDownloadApiClient: FileDownloadApiClient,
     private val tempFileSystemRotationService: TempFileSystemRotationService,
 ) {
     companion object : KLogging()
 
     fun getFile(fileId: Long): ResponseEntity<Resource> {
-        return fileApiClient.download(fileId)
+        return fileDownloadApiClient.download(fileId)
     }
 
     fun getFileDataBuffer(fileId: Long): ResponseEntity<Flux<DataBuffer>> {
-        return fileApiClient.downloadV2(fileId)
+        return fileDownloadApiClient.downloadV2(fileId)
     }
 
     fun writeLocal(fileId: Long) {
         val tempFilePath = tempFileSystemRotationService.getPrivatePath()
         for(i in 1..3) {
-            val dataBuffer = fileApiClient.downloadV2(fileId)
+            val dataBuffer = fileDownloadApiClient.downloadV2(fileId)
             val body = dataBuffer.body
                 ?: throw StarterException(ErrorCode.UNKNOWN, "fileBody is null ( fileId : $fileId")
 

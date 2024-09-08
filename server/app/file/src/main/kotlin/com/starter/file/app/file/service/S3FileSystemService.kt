@@ -1,6 +1,6 @@
 package com.starter.file.app.file.service
 
-import com.starter.core.rdb.domain.file.models.FileStorageType
+import com.starter.core.models.file.FileStorageType
 import com.starter.core.s3.S3Client
 import com.starter.core.s3.models.S3PutObjectRequest
 import com.starter.core.s3.utils.S3KeyUtils

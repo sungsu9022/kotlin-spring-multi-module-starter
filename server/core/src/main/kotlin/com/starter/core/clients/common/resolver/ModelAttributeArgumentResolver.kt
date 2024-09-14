@@ -85,7 +85,8 @@ class ModelAttributeArgumentResolver(
         }
 
         if (multipartFile.contentType != null) {
-            headers.add("Content-Type", multipartFile.contentType)
+            headers.add(HttpHeaders.CONTENT_TYPE, multipartFile.contentType)
+
         }
 
         return HttpEntity<Resource>(multipartFile.resource, headers)

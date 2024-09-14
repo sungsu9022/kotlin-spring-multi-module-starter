@@ -1,6 +1,8 @@
 package com.starter.core.clients.internal.admin
 
+import com.starter.core.clients.common.HttpInterfaceProxyFactory
 import com.starter.core.clients.common.WebClientFactory
+import com.starter.core.clients.common.resolver.ModelAttributeArgumentResolver
 import com.starter.core.clients.internal.InternalClientsProperties
 import com.starter.core.clients.internal.admin.api.UserApiClient
 import org.springframework.beans.factory.annotation.Qualifier
@@ -28,6 +30,9 @@ class AdminClientConfig(
 
     @Bean
     fun userApiClient(@Qualifier(ADMIN_WEB_CLIENT) webClient: WebClient): UserApiClient {
-        return UserApiClient.create(webClient)
+        return HttpInterfaceProxyFactory.create<UserApiClient>(
+            webClient = webClient,
+            resolvers = listOf(ModelAttributeArgumentResolver.INSTANCE_WITH_JSON)
+        )
     }
 }

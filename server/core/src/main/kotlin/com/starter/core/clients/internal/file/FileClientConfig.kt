@@ -1,5 +1,6 @@
 package com.starter.core.clients.internal.file
 
+import com.starter.core.clients.common.HttpInterfaceProxyFactory
 import com.starter.core.clients.common.WebClientFactory
 import com.starter.core.clients.internal.InternalClientsProperties
 import com.starter.core.clients.internal.file.api.FileDownloadApiClient
@@ -29,11 +30,11 @@ class FileClientConfig(
 
     @Bean
     fun fileDownloadApiClient(@Qualifier(FILE_WEB_CLIENT) webClient: WebClient): FileDownloadApiClient {
-        return FileDownloadApiClient.create(webClient)
+        return HttpInterfaceProxyFactory.create<FileDownloadApiClient>(webClient)
     }
 
     @Bean
     fun fileUploadApiClient(@Qualifier(FILE_WEB_CLIENT) webClient: WebClient): FileUploadApiClient {
-        return FileUploadApiClient.create(webClient)
+        return HttpInterfaceProxyFactory.create<FileUploadApiClient>(webClient)
     }
 }

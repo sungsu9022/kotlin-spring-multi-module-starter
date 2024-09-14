@@ -1,9 +1,9 @@
 package com.starter.file.app.file.facade
 
+import com.starter.core.models.file.FileResponse
+import com.starter.core.models.file.FileUploadRequest
 import com.starter.file.app.file.mapper.FileMetadataMapper
 import com.starter.file.app.file.mapper.FileModelMapper
-import com.starter.file.app.file.models.FileResponse
-import com.starter.file.app.file.models.FileUploadRequest
 import com.starter.file.app.file.service.FileService
 import com.starter.file.app.file.service.FileSystemService
 import jakarta.transaction.Transactional

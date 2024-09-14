@@ -1,5 +1,6 @@
 package com.starter.file
 
+import com.starter.core.clients.internal.InternalClientConfig
 import com.starter.core.common.config.CommonConfig
 import com.starter.core.jasypt.config.JasyptConfig
 import com.starter.core.s3.config.S3Config
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Import
     JasyptConfig::class,
     CommonConfig::class,
     SecurityConfig::class,
+    InternalClientConfig::class,
     S3Config::class,
     TempFileConfig::class,
 ])

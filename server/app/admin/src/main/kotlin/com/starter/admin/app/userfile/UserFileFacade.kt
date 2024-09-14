@@ -1,10 +1,13 @@
 package com.starter.admin.app.userfile
 
 import com.starter.core.clients.internal.file.api.FileDownloadApiClient
+import com.starter.core.clients.internal.file.api.FileUploadApiClient
 import com.starter.core.common.exception.ErrorCode
 import com.starter.core.common.exception.StarterException
 import com.starter.core.common.utils.FileUtils
 import com.starter.core.common.utils.FluxDataBufferUtils
+import com.starter.core.models.file.FileResponse
+import com.starter.core.models.file.FileUploadRequest
 import com.starter.core.tempfile.service.TempFileSystemRotationService
 import mu.KLogging
 import org.springframework.core.io.Resource
@@ -16,9 +19,14 @@ import reactor.core.publisher.Flux
 @Component
 class UserFileFacade(
     private val fileDownloadApiClient: FileDownloadApiClient,
+    private val fileUploadApiClient: FileUploadApiClient,
     private val tempFileSystemRotationService: TempFileSystemRotationService,
 ) {
     companion object : KLogging()
+
+    fun upload(request: FileUploadRequest): FileResponse {
+        return fileUploadApiClient.uploadFile(request)
+    }
 
     fun getFile(fileId: Long): ResponseEntity<Resource> {
         return fileDownloadApiClient.download(fileId)
@@ -39,9 +47,5 @@ class UserFileFacade(
             val fileInputStream = FluxDataBufferUtils.toInputStream(body)
             FileUtils.writeFile(fileInputStream, outputFilePath.toFile())
         }
-
-
-
-
     }
 }

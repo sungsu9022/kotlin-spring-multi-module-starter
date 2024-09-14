@@ -1,4 +1,4 @@
-package com.starter.file.app.file.models
+package com.starter.core.models.file
 
 enum class UploadDirectoryType(val path: String) {
     TEMPORARY("temporary"),

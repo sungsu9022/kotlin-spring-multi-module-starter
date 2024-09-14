@@ -1,9 +1,4 @@
-package com.starter.file.app.file.models
-
-import com.starter.core.models.file.File
-import com.starter.core.models.file.FileFormat
-import com.starter.core.models.file.FileStorageType
-import com.starter.core.models.file.FileType
+package com.starter.core.models.file
 
 data class FileResponse(
     override val id: Long,

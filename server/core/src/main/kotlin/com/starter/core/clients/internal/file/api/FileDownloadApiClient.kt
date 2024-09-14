@@ -21,7 +21,7 @@ interface FileDownloadApiClient : FileDownloadApi {
             val httpServiceProxyFactory = HttpServiceProxyFactory
                 .builderFor(WebClientAdapter.create(webClient))
                 .customArgumentResolver(
-                    ModelAttributeArgumentResolver.INSTANCE
+                    ModelAttributeArgumentResolver.INSTANCE_WITH_JSON
                 )
                 .build()
             return httpServiceProxyFactory.createClient(FileDownloadApiClient::class.java)

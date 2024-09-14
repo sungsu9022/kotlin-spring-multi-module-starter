@@ -5,8 +5,8 @@ import com.starter.core.models.user.UserCreateRequest
 import com.starter.core.models.user.UserPatchRequest
 import com.starter.core.models.user.UserResponse
 import com.starter.core.models.user.UserSearchRequest
-import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestAttribute
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.support.WebClientAdapter
@@ -25,7 +25,7 @@ interface UserApiClient : UserApi {
             val httpServiceProxyFactory = HttpServiceProxyFactory
                 .builderFor(WebClientAdapter.create(webClient))
                 .customArgumentResolver(
-                    ModelAttributeArgumentResolver.INSTANCE
+                    ModelAttributeArgumentResolver.INSTANCE_WITH_JSON
                 )
                 .build()
             return httpServiceProxyFactory.createClient(UserApiClient::class.java)
@@ -37,17 +37,17 @@ interface UserApiClient : UserApi {
     override fun create(@RequestBody request: UserCreateRequest): UserResponse
 
     @GetExchange
-    override fun getUsers(@ModelAttribute request: UserSearchRequest) : List<UserResponse>
+    override fun getUsers(@RequestAttribute request: UserSearchRequest) : List<UserResponse>
 
-    @GetExchange("{uuid}")
+    @GetExchange("/{uuid}")
     override fun getUser(@PathVariable uuid: String): UserResponse
 
-    @PatchExchange("{uuid}")
+    @PatchExchange("/{uuid}")
     override fun patchUser(
         @PathVariable uuid: String,
         @RequestBody request: UserPatchRequest
     )
 
-    @DeleteExchange("{uuid}")
+    @DeleteExchange("/{uuid}")
     override fun deleteUser(@PathVariable uuid: String)
 }

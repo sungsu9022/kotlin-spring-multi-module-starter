@@ -2,8 +2,8 @@ package com.starter.file.app.file.mapper
 
 import com.starter.core.common.utils.UUIDUtils
 import com.starter.core.models.file.File
+import com.starter.core.models.file.FileResponse
 import com.starter.file.app.file.models.FileMetadata
-import com.starter.file.app.file.models.FileResponse
 import com.starter.file.app.file.models.FileUploadResult
 import com.starter.file.repository.file.FileEntity
 import org.mapstruct.Mapper

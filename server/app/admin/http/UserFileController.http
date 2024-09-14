@@ -13,6 +13,32 @@ GET /api/user-files/write-local?fileId=2
 Host: localhost:9901
 Content-Type: application/json
 
+### user file upload
+POST /api/user-files/upload
+Host: localhost:9901
+Content-Type: multipart/form-data; boundary=Webappboundary
+
+--Webappboundary
+Content-Disposition: form-data; name="file"; filename="test2.png"
+
+< test2.png
+--Webappboundary
+Content-Disposition: form-data; name="fileName"
+
+5g_test.zip
+--Webappboundary
+Content-Disposition: form-data; name="fileType"
+
+BASIC
+--Webappboundary
+Content-Disposition: form-data; name="description"
+
+test file
+--Webappboundary
+Content-Disposition: form-data; name="uploadDirectoryType"
+
+REPOSITORY
+
 
 
 

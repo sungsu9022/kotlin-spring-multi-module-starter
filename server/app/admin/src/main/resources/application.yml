@@ -1,6 +1,10 @@
 spring:
   application:
     name: starter-admin
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
   messages:
     encoding: UTF-8
   profiles:

@@ -1,6 +1,5 @@
-package com.starter.file.app.file.models
+package com.starter.core.models.file
 
-import com.starter.core.models.file.FileType
 import org.springframework.web.multipart.MultipartFile
 
 sealed interface UploadRequest {

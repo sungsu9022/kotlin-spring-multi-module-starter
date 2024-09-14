@@ -1,0 +1,34 @@
+### 유저 조회
+GET /api/v1/file-users?email=sungsu9022@gmail.com
+Host: localhost:9902
+Accept: *
+
+### get user
+GET /api/v1/file-users/879d25a2-be22-462d-a3b8-cec61c1b6976
+Accept: application/json
+Host: localhost:9902
+
+### get users
+GET /api/v1/file-users
+Accept: application/json
+Host: localhost:9902
+
+### get users (userName)
+GET /api/v1/file-users?userName=sungsu2
+Accept: application/json
+Host: localhost:9902
+
+### patch user
+PATCH /api/v1/file-users/879d25a2-be22-462d-a3b8-cec61c1b6976
+Accept: application/json
+Host: localhost:9902
+Content-Type: application/json
+
+{"userName": "changed222"}
+
+
+### delete user
+DELETE /api/v1/file-users/d50bddf9-0b57-46a1-8ab0-d85e4dd0b5c7
+Accept: application/json
+Host: localhost:9902
+

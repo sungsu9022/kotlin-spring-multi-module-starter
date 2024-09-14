@@ -1,11 +1,11 @@
 ### 파일 다운로드
 GET /api/v1/files/download?fileId=2
-Host: localhost:9903
+Host: localhost:9902
 Accept: *
 
 ### 파일 다운로드2 (대용량)
 GET /api/v1/files/download?fileId=7
-Host: localhost:9903
+Host: localhost:9902
 Accept: *
 
 

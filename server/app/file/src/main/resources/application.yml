@@ -15,6 +15,7 @@ spring:
       - security
       - s3
       - tempfile
+      - clients
 
 server:
   port: 9902
